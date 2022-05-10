@@ -76,12 +76,15 @@ create table tblAtor (
     dataNascimento date not null,
     dataFalecimento date,
     biografia text,
-    idSexo int not null,
+    idSexo int unsigned not null,
+    
     constraint FK_Sexo_Ator #cria um nome representativo para a relação
     foreign key(idSexo)		#estabelece a chave estrangeira nessa tabela
     references tblSexo(id), #especifica qual a tabela de origem dessa fk
 	unique index(id)
 );
+
+desc tblAtor;
 
 
 
