@@ -115,6 +115,58 @@ alter table tblAtorNacionalidade
     foreign key (idNacionalidade)
     references tblNacionalidade (id);
     
+#comandos básicos de CRUD(CREATE, SELECT, UPDATE, DELETE)
+
+#INSERT 
+insert into tblSexo 
+	(sigla, 
+     nome)
+     
+     values 
+     ('F', 
+      'Feminino');
+      
+insert into tblSexo
+	(sigla,
+     nome)
+     
+     values
+	 ('M',
+      'Masculino'),
+	 ('O',
+      'Não binário');
+      
+select * from tblsexo;
+
+update tblsexo set 
+	nome = 'FEMININO' where id = 1;
+    
+delete from tblsexo;
+                    
+insert into tblator (nome, 
+					nomeArtistico, 
+                    dataNascimento, 
+                    dataFalecimento, 
+                    biografia, 
+                    idSexo)
+					values 
+                    ('James Edmund Caan', 
+                    'James Caan', '1940-03-26', 
+                    null, 
+                    'Conquistou a faixa preta de caratê quando jovem;- Possui uma estrela na Calçada da Fama, localizada em 6648 Hollywood Boulevard;- Pai do tambem ator Scott Caan.', 
+                    4);
+
+desc tblator;
+
+select * from tblator;
+
+select nome, nomeArtistico, biografia
+	from tblator
+		where nome not like '%Pacino%' or 
+			biografia not like '%Pacino%';
+
+
+    
 
 
 
