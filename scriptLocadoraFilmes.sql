@@ -60,9 +60,6 @@ alter table tblNacionalidade
 #inserindo uma propriedade no atributo, mas não renomea atributo
 alter table tblNacionalidade
 	modify column nome varchar(45) not null;
-    
-alter table tblNacionalidade
-	rename column nome to nomeNacionalidade;
 
 #renomeando o atributo e alterando sua estrutura se necessário
 alter table tblNacionalidade 
@@ -85,6 +82,43 @@ create table tblAtor (
 );
 
 desc tblAtor;
+
+create table tblAtorNacionalidade (
+		id int unsigned not null auto_increment primary key,
+        idAtor int unsigned not null,
+        idNacionalidade int unsigned not null,
+        
+        constraint FK_Ator_AtorNacionalidade
+        foreign key (idAtor)
+        references tblAtor (id),
+        unique index (id)
+);
+
+#acrescentando constraint de nacionalidade através do alter
+alter table tblAtorNacionalidade
+	add constraint FK_Nacionalidade_AtorNacionalidade
+    foreign key (idNacionalidade)
+    references tblNacionalidade (id);
+
+desc tblAtorNacionalidade;
+
+show tables;
+
+#removendo chave estranheira, constraint da tabela
+alter table tblAtorNacionalidade
+	drop foreign key FK_Nacionalidade_AtorNacionalidade;
+    
+#exemplo adicionando dois comandos: adicionando tabela e depois a chave estranheira
+alter table tblAtorNacionalidade
+	add column idNacionalidade int unsigned not null,
+    add constraint FK_Nacionalidade_AtorNacionalidade
+    foreign key (idNacionalidade)
+    references tblNacionalidade (id);
+    
+
+
+
+
 
 
 
